@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="navbar">
+      <div id="navbar-content">
+        <div id="logo">
+          <img src="https://viblo.asia/logo_full.svg" alt="Logo" />
+        </div>
+        <div id="nav-links">
+          <a href="#">Bài Viết</a>
+          <a href="#">Hỏi Đáp</a>
+          <a href="#">Thảo Luận</a>
+        </div>
+        <div id="search-bar">
+          <input type="text" placeholder="Tìm kiếm..." />
+        </div>
+        <a href="#" id="login">Đăng Nhập</a>
+        <a href="#" id="signup">Đăng Ký</a>
+      </div>
+    </div>
+    <h1 id="title">Title</h1>
+    <img
+      src="https://images.viblo.asia/e6de922a-b90d-48b5-a38e-ad43a33cf833.png"
+      alt=""
+      style="width: 700px; height: 500px;"
+    />
+    <div id="slug"></div>
+    <div id="category_id"></div>
+    <div id="published_at"></div>
+    <div id="system"></div>
+    <div id="transliterated"></div>
+    <div id="category"></div>
+    <div id="content"></div>
+    <script>
+      $("document").ready(() => {
+        $.get(
+          "https://844deb07bd27403da728d3d434ab3268.api.mockbin.io/",
+          (data, textStatus, xhr) => {
+            if (xhr.status === 200) {
+              showData(data);
+            }
+          }
+        );
+
+        function showData(obj) {
+          const title = document.getElementById("title");
+          title.innerText = obj.title;
+          const slug = document.getElementById("slug");
+          slug.innerText = obj.slug;
+          const category_id = document.getElementById("category_id");
+          category_id.innerText = obj.category_id;
+          const published_at = document.getElementById("published_at");
+          published_at.innerText = obj.published_at;
+          const system = document.getElementById("system");
+          system.innerText = obj.system;
+          const transliterated = document.getElementById("transliterated");
+          transliterated.innerText = obj.transliterated;
+          const category = document.getElementById("category");
+          category.innerText = obj.category;
+          const content = document.getElementById("content");
+          content.innerText = obj.content;
+        }
+      });
+    </script>
+  </body>
+</html>
